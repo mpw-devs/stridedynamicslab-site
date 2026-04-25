@@ -1,23 +1,17 @@
-# Stride Dynamics Lab Website
+# Stride Dynamics Lab Website v15 Baseline
 
-Static brochure landing page for Stride Dynamics Lab and the Foot Wedge Trainer.
+This is a clean baseline package with real product images included.
 
-## Files
+## Upload structure
 
-- `index.html`
-- `styles.css`
-- `script.js`
-- favicon files in the root directory
-- product and social preview images in `/assets`
+Upload all files and folders at the root of your GitHub repository:
 
-## Contact email
+- index.html
+- styles.css
+- script.js
+- README.md
+- favicon.ico
+- sd_favicon_*.png
+- assets/
 
-The site contact form uses:
-
-`info@stridedynamicslab.com`
-
-## Checkout path
-
-Primary product link points to Etsy:
-
-https://www.etsy.com/listing/4478473137/foot-wedge-trainer-textured-strength
+Do not upload the parent folder itself.
