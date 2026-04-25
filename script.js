@@ -1,56 +1,48 @@
-const BUSINESS_EMAIL = "hello@stridedynamicslab.com"; // Change this to your preferred inbox before publishing.
+const thumbs = document.querySelectorAll('.thumb');
+const mainImage = document.getElementById('mainImage');
+const mainImageButton = document.getElementById('mainImageButton');
+const dialog = document.getElementById('imageDialog');
+const dialogImage = document.getElementById('dialogImage');
+const closeDialog = document.getElementById('closeDialog');
+const form = document.getElementById('interestForm');
+const year = document.getElementById('year');
 
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
+year.textContent = new Date().getFullYear();
 
-const mainImage = document.getElementById("mainImage");
-const thumbs = document.querySelectorAll(".thumb");
 thumbs.forEach((thumb) => {
-  thumb.addEventListener("click", () => {
-    thumbs.forEach((item) => item.classList.remove("active"));
-    thumb.classList.add("active");
+  thumb.addEventListener('click', () => {
+    thumbs.forEach((item) => item.classList.remove('active'));
+    thumb.classList.add('active');
     mainImage.src = thumb.dataset.src;
     mainImage.alt = thumb.dataset.alt;
   });
 });
 
-const dialog = document.getElementById("imageDialog");
-const dialogImage = document.getElementById("dialogImage");
-const mainImageButton = document.getElementById("mainImageButton");
-const closeDialog = document.getElementById("closeDialog");
+mainImageButton.addEventListener('click', () => {
+  dialogImage.src = mainImage.src;
+  dialogImage.alt = mainImage.alt;
+  dialog.showModal();
+});
 
-if (dialog && dialogImage && mainImageButton) {
-  mainImageButton.addEventListener("click", () => {
-    dialogImage.src = mainImage.src;
-    dialogImage.alt = mainImage.alt;
-    dialog.showModal();
-  });
-  closeDialog?.addEventListener("click", () => dialog.close());
-}
+closeDialog.addEventListener('click', () => dialog.close());
 
-const form = document.getElementById("interestForm");
-if (form) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const feedback = data.getAll("feedback").join(", ") || "None selected";
-    const name = data.get("name") || "Not provided";
-    const email = data.get("email") || "Not provided";
-    const interest = data.get("interest") || "Not selected";
-    const message = data.get("message") || "";
+dialog.addEventListener('click', (event) => {
+  if (event.target === dialog) dialog.close();
+});
 
-    const subject = encodeURIComponent("Stride Dynamics Foot Wedge Inquiry");
-    const body = encodeURIComponent(
-`Name: ${name}
-Email: ${email}
-Interest: ${interest}
-Optional feedback: ${feedback}
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(form);
+  const feedback = data.getAll('feedback');
+  const subject = encodeURIComponent('Stride Dynamics Foot Wedge Inquiry');
+  const body = encodeURIComponent(
+`Name: ${data.get('name') || ''}
+Email: ${data.get('email') || ''}
+Interest: ${data.get('interest') || ''}
+Optional feedback: ${feedback.join(', ') || 'None selected'}
 
 Message:
-${message}
-
-Sent from stridedynamicslab.com`
-    );
-    window.location.href = `mailto:${BUSINESS_EMAIL}?subject=${subject}&body=${body}`;
-  });
-}
+${data.get('message') || ''}`
+  );
+  window.location.href = `mailto:matt@mwstrategicadvisors.com?subject=${subject}&body=${body}`;
+});
