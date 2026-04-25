@@ -1,12 +1,23 @@
-# Stride Dynamics Lab Foot Wedge Trainer Website
+# Stride Dynamics Lab Foot Wedge Website
 
-Static HTML/CSS/JS site for the Stride Dynamics Lab Foot Wedge Trainer.
+Static brochure site for the Stride Dynamics Lab Foot Wedge (SD-001).
 
 ## Files
-- index.html
-- styles.css
-- script.js
-- assets/ product images
+- `index.html` - homepage
+- `styles.css` - site styling
+- `script.js` - image gallery and inquiry form mailto behavior
+- `assets/` - logo and product images
 
-## Deployment
-Upload all files and the full assets folder to the root of the GitHub repository connected to Cloudflare Pages.
+## Before publishing
+Open `script.js` and replace:
+
+```js
+const BUSINESS_EMAIL = "hello@stridedynamicslab.com";
+```
+
+with the inbox you want inquiries sent to.
+
+## Cloudflare Pages settings
+- Framework preset: None
+- Build command: blank
+- Output directory: `/` or blank
