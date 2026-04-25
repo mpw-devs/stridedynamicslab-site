@@ -1,4 +1,4 @@
-const BUSINESS_EMAIL = "matt@mwstrategicadvisors.com"; // Change this to your preferred inbox before publishing.
+const BUSINESS_EMAIL = "hello@stridedynamicslab.com"; // Change this to your preferred inbox before publishing.
 
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
