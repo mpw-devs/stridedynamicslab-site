@@ -1,28 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('interestForm');
-  if (!form) return;
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const name = data.get('name') || '';
-    const email = data.get('email') || '';
-    const interestType = data.get('interestType') || 'General question';
-    const message = data.get('message') || '';
+const form = document.getElementById('interestForm');
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const reason = document.getElementById('reason').value;
+  const message = document.getElementById('message').value.trim();
 
-    const subject = `Stride Dynamics Lab inquiry: ${interestType}`;
-    const body = [
-      'Stride Dynamics Lab Foot Wedge inquiry',
-      '',
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Interest type: ${interestType}`,
-      '',
-      'Message:',
-      message
-    ].join('\n');
+  const subject = encodeURIComponent('Stride Dynamics Lab Foot Wedge Inquiry');
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nReason: ${reason}\n\nMessage:\n${message}`
+  );
 
-    const mailto = `mailto:matt@mwstrategicadvisors.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-  });
+  window.location.href = `mailto:matt@mwstrategicadvisors.com?subject=${subject}&body=${body}`;
 });

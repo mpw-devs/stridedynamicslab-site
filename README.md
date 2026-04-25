@@ -1,23 +1,18 @@
 # Stride Dynamics Lab Foot Wedge Website
 
-Static brochure site for the Stride Dynamics Lab Foot Wedge (SD-001).
+Static brochure website for the Stride Dynamics Lab Foot Wedge.
 
 ## Files
-- `index.html` - homepage
-- `styles.css` - site styling
-- `script.js` - image gallery and inquiry form mailto behavior
-- `assets/` - logo and product images
+- `index.html` - Homepage
+- `styles.css` - Styling
+- `script.js` - Contact form mailto behavior
+- `assets/` - Product images
 
-## Before publishing
-Open `script.js` and replace:
-
-```js
-const BUSINESS_EMAIL = "hello@stridedynamicslab.com";
-```
-
-with the inbox you want inquiries sent to.
-
-## Cloudflare Pages settings
-- Framework preset: None
-- Build command: blank
+## Deployment
+Upload all files at the repository root. Cloudflare Pages settings:
+- Framework preset: None / No framework
+- Build command: leave blank
 - Output directory: `/` or blank
+
+## Contact email
+The contact form opens an email draft addressed to matt@mwstrategicadvisors.com.
