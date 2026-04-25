@@ -1,111 +1,152 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stride Dynamics Lab | Foot Wedge Trainer</title>
-  <meta name="description" content="Stride Dynamics Lab designs simple, engineered movement tools. Explore the Foot Wedge Trainer for calf stretching, ankle mobility work, and active foot engagement." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Stride Dynamics Lab makes engineered movement tools, starting with a compact Foot Wedge Trainer for calf stretching, ankle mobility work, and active foot engagement.">
+  <meta property="og:title" content="Stride Dynamics Lab Foot Wedge Trainer">
+  <meta property="og:description" content="A compact, textured wedge for practical lower-leg mobility work.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/foot-wedge-hero.jpg">
+  <link rel="preload" href="assets/foot-wedge-hero.jpg" as="image">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="page-wrap header-inner">
+    <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Stride Dynamics Lab home">
         <span class="brand-title">Stride Dynamics Lab</span>
         <span class="brand-subtitle">Engineered movement tools</span>
       </a>
-      <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav" aria-label="Main navigation">
         <a href="#product">Product</a>
         <a href="#why">Why it matters</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
+
   <main id="top">
-    <section class="hero-section">
-      <div class="page-wrap hero-grid">
+    <section class="hero section-tight">
+      <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Foot Wedge Trainer</p>
           <h1>Mobility work should be simple, controlled, and repeatable.</h1>
-          <p class="hero-lede">A compact textured wedge for calf stretching, ankle mobility work, and active foot engagement — built for practical daily use without adding complexity to your routine.</p>
-          <div class="button-row">
+          <p class="lead">A compact textured wedge for calf stretching, ankle mobility work, and active foot engagement — built for practical daily use without adding complexity.</p>
+          <div class="hero-actions">
             <a class="button primary" href="https://www.etsy.com/listing/4478473137/foot-wedge-trainer-textured-strength" target="_blank" rel="noopener">View on Etsy</a>
             <a class="button secondary" href="#contact">Ask a question</a>
           </div>
-          <p class="builder-note">Designed by an analytical runner and engineer.</p>
+          <p class="microcopy">Designed by an analytical runner and engineer. Small-batch availability through Etsy.</p>
         </div>
-        <figure class="hero-card">
-          <img src="assets/hero-foot-wedge.jpg" alt="Gray textured Foot Wedge Trainer shown from the front angle" />
+        <figure class="hero-media card">
+          <img src="assets/foot-wedge-hero.jpg" alt="Foot Wedge Trainer front angled view">
         </figure>
       </div>
     </section>
-    <section id="product" class="section product-section">
-      <div class="page-wrap">
+
+    <section class="feature-strip" aria-label="Product highlights">
+      <div class="container feature-strip-inner">
+        <div><strong>Fixed incline</strong><span>repeatable lower-leg position</span></div>
+        <div><strong>Textured surface</strong><span>active foot placement</span></div>
+        <div><strong>Compact form</strong><span>simple to store and use</span></div>
+        <div><strong>Small-batch</strong><span>engineered and refined in-house</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="product">
+      <div class="container">
         <div class="section-heading">
           <p class="eyebrow">The product</p>
           <h2>A straightforward wedge with intentional details.</h2>
           <p>The Foot Wedge Trainer is designed as a durable, focused tool for lower-leg mobility work. The textured surface supports active foot placement while the wedge angle creates a controlled position for calf and ankle work.</p>
         </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <img src="assets/foot-wedge-side.jpg" alt="Side profile of the Foot Wedge Trainer" />
-            <h3>Stable wedge profile</h3>
-            <p>A fixed incline gives a consistent position for repeated mobility work.</p>
-          </article>
-          <article class="feature-card">
-            <img src="assets/foot-wedge-bottom.jpg" alt="Underside and rear angle of the Foot Wedge Trainer" />
-            <h3>Compact footprint</h3>
-            <p>Small enough to keep visible and easy to use before or after activity.</p>
-          </article>
-          <article class="feature-card">
-            <img src="assets/foot-wedge-rear.jpg" alt="Rear angle of the Foot Wedge Trainer" />
-            <h3>Textured top surface</h3>
-            <p>Designed to promote deliberate foot placement during use.</p>
-          </article>
+
+        <div class="product-layout">
+          <div class="gallery card">
+            <img id="mainImage" src="assets/foot-wedge-side.jpg" alt="Foot Wedge Trainer side profile">
+          </div>
+          <div class="product-copy card soft-card">
+            <h3>Made for repeatable use.</h3>
+            <ul class="check-list">
+              <li>Simple fixed wedge profile</li>
+              <li>Textured top surface for foot engagement</li>
+              <li>Compact footprint for home, gym, or warmup use</li>
+              <li>Designed and iterated through physical prototyping</li>
+            </ul>
+            <a class="button primary full" href="https://www.etsy.com/listing/4478473137/foot-wedge-trainer-textured-strength" target="_blank" rel="noopener">View current listing</a>
+          </div>
+        </div>
+
+        <div class="thumb-grid" aria-label="Foot Wedge Trainer product images">
+          <button class="thumb active" data-src="assets/foot-wedge-side.jpg" data-alt="Foot Wedge Trainer side profile"><img src="assets/foot-wedge-side.jpg" alt=""></button>
+          <button class="thumb" data-src="assets/foot-wedge-angle.jpg" data-alt="Foot Wedge Trainer underside angled view"><img src="assets/foot-wedge-angle.jpg" alt=""></button>
+          <button class="thumb" data-src="assets/foot-wedge-bottom.jpg" data-alt="Foot Wedge Trainer compact footprint"><img src="assets/foot-wedge-bottom.jpg" alt=""></button>
+          <button class="thumb" data-src="assets/foot-wedge-hero.jpg" data-alt="Foot Wedge Trainer front angled view"><img src="assets/foot-wedge-hero.jpg" alt=""></button>
         </div>
       </div>
     </section>
-    <section id="why" class="section why-section">
-      <div class="page-wrap split-section">
+
+    <section class="section muted-section" id="why">
+      <div class="container two-column">
         <div>
           <p class="eyebrow">Why it matters</p>
           <h2>Useful mobility tools do not need to be complicated.</h2>
         </div>
-        <div class="why-copy">
+        <div class="stacked-copy">
           <p>Many routines fail because they are hard to repeat. The Foot Wedge Trainer is meant to be simple enough to keep visible, easy to use, and specific enough to earn its place in a daily routine.</p>
-          <div class="mini-grid">
-            <div><h3>Controlled position</h3><p>Consistent angle for repeatable lower-leg mobility work.</p></div>
-            <div><h3>Foot engagement</h3><p>Textured contact surface encourages active placement.</p></div>
-            <div><h3>Simple by design</h3><p>No app, straps, setup, or unnecessary complexity.</p></div>
-          </div>
+          <p>Use it as part of a warmup, cooldown, or dedicated lower-leg mobility session. It is not a medical device and does not replace professional medical advice.</p>
         </div>
       </div>
     </section>
-    <section id="contact" class="section contact-section">
-      <div class="page-wrap contact-card">
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
         <div class="contact-copy">
-          <p class="eyebrow">Feedback & availability</p>
-          <h2>Share your thoughts or ask about availability.</h2>
-          <p>Use the form to send design feedback, ask a question, show purchase interest, or inquire about a preorder. The form opens your email client so you can review the message before sending.</p>
+          <p class="eyebrow">Feedback / questions / availability</p>
+          <h2>Share your thoughts or ask about a Foot Wedge.</h2>
+          <p>Use the form to send design feedback, ask a question, show purchase interest, or inquire about small-batch availability. The form opens your email client so you can review the message before sending.</p>
           <p class="direct-email">Direct email: <a href="mailto:matt@mwstrategicadvisors.com">matt@mwstrategicadvisors.com</a></p>
         </div>
-        <form id="interest-form" class="interest-form">
-          <label><span>Name</span><input type="text" id="name" name="name" placeholder="Your name" required /></label>
-          <label><span>Email</span><input type="email" id="email" name="email" placeholder="you@example.com" required /></label>
-          <label><span>Reason for reaching out</span><select id="reason" name="reason"><option>General question</option><option>Product feedback</option><option>Interested in purchasing</option><option>Pre-order inquiry</option></select></label>
-          <label><span>Message</span><textarea id="message" name="message" rows="5" placeholder="What would you like to know or share?"></textarea></label>
-          <button type="submit" class="button primary full-width">Prepare email</button>
+
+        <form class="interest-form card" id="interestForm">
+          <label>
+            Name
+            <input type="text" name="name" placeholder="Your name" autocomplete="name">
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </label>
+          <label>
+            Reason for reaching out
+            <select name="interest" required>
+              <option>General question</option>
+              <option>Product feedback</option>
+              <option>Interested in purchasing</option>
+              <option>Preorder / small-batch request</option>
+              <option>Coach, trainer, or PT interest</option>
+            </select>
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="What would you like to know or share?" required></textarea>
+          </label>
+          <button class="button primary full" type="submit">Prepare email</button>
           <p class="form-note">No payment is collected on this site. Etsy is the current checkout path.</p>
         </form>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
-    <div class="page-wrap footer-inner">
-      <span>© <span id="year"></span> Stride Dynamics Lab</span>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Stride Dynamics Lab</p>
       <a href="https://www.etsy.com/listing/4478473137/foot-wedge-trainer-textured-strength" target="_blank" rel="noopener">View Etsy listing</a>
     </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

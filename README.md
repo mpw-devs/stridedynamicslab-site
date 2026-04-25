@@ -1,11 +1,17 @@
-# Stride Dynamics Lab static site
+# Stride Dynamics Lab Foot Wedge Site
 
-Upload the contents of this folder to the root of the GitHub repository connected to Cloudflare Pages.
+Static website files for stridedynamicslab.com.
 
-Required root files:
+Upload these files and the full `assets` folder to the GitHub repository root:
+
 - index.html
 - styles.css
 - script.js
+- README.md
 - assets/
 
-This version intentionally excludes logo files and focuses only on the Foot Wedge Trainer.
+This version uses:
+- Etsy listing: https://www.etsy.com/listing/4478473137/foot-wedge-trainer-textured-strength
+- Contact email: matt@mwstrategicadvisors.com
+
+No logo image files are required.
