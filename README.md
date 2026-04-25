@@ -1,18 +1,11 @@
-# Stride Dynamics Lab Foot Wedge Website
+# Stride Dynamics Lab static site
 
-Static brochure website for the Stride Dynamics Lab Foot Wedge.
+Upload the contents of this folder to the root of the GitHub repository connected to Cloudflare Pages.
 
-## Files
-- `index.html` - Homepage
-- `styles.css` - Styling
-- `script.js` - Contact form mailto behavior
-- `assets/` - Product images
+Required root files:
+- index.html
+- styles.css
+- script.js
+- assets/
 
-## Deployment
-Upload all files at the repository root. Cloudflare Pages settings:
-- Framework preset: None / No framework
-- Build command: leave blank
-- Output directory: `/` or blank
-
-## Contact email
-The contact form opens an email draft addressed to matt@mwstrategicadvisors.com.
+This version intentionally excludes logo files and focuses only on the Foot Wedge Trainer.
