@@ -1,37 +1,48 @@
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-const mainImage = document.getElementById('mainImage');
 const thumbs = document.querySelectorAll('.thumb');
+const mainImage = document.getElementById('mainImage');
+const mainImageButton = document.getElementById('mainImageButton');
+const dialog = document.getElementById('imageDialog');
+const dialogImage = document.getElementById('dialogImage');
+const closeDialog = document.getElementById('closeDialog');
+const form = document.getElementById('interestForm');
+const year = document.getElementById('year');
+
+year.textContent = new Date().getFullYear();
+
 thumbs.forEach((thumb) => {
   thumb.addEventListener('click', () => {
-    const src = thumb.getAttribute('data-src');
-    const alt = thumb.getAttribute('data-alt') || 'Foot Wedge Trainer product image';
-    if (mainImage && src) {
-      mainImage.src = src;
-      mainImage.alt = alt;
-    }
-    thumbs.forEach((t) => t.classList.remove('active'));
+    thumbs.forEach((item) => item.classList.remove('active'));
     thumb.classList.add('active');
+    mainImage.src = thumb.dataset.src;
+    mainImage.alt = thumb.dataset.alt;
   });
 });
 
-const form = document.getElementById('interestForm');
-if (form) {
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const body = [
-      'Stride Dynamics Lab website inquiry',
-      '',
-      `Name: ${data.get('name') || ''}`,
-      `Email: ${data.get('email') || ''}`,
-      `Reason: ${data.get('interest') || ''}`,
-      '',
-      'Message:',
-      data.get('message') || ''
-    ].join('\n');
-    const mailto = `mailto:matt@mwstrategicadvisors.com?subject=${encodeURIComponent('Stride Dynamics Lab Foot Wedge Inquiry')}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-  });
-}
+mainImageButton.addEventListener('click', () => {
+  dialogImage.src = mainImage.src;
+  dialogImage.alt = mainImage.alt;
+  dialog.showModal();
+});
+
+closeDialog.addEventListener('click', () => dialog.close());
+
+dialog.addEventListener('click', (event) => {
+  if (event.target === dialog) dialog.close();
+});
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(form);
+  const feedback = data.getAll('feedback');
+  const subject = encodeURIComponent('Stride Dynamics Foot Wedge Inquiry');
+  const body = encodeURIComponent(
+`Name: ${data.get('name') || ''}
+Email: ${data.get('email') || ''}
+Interest: ${data.get('interest') || ''}
+Optional feedback: ${feedback.join(', ') || 'None selected'}
+
+Message:
+${data.get('message') || ''}`
+  );
+  window.location.href = `mailto:matt@mwstrategicadvisors.com?subject=${subject}&body=${body}`;
+});
