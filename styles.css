@@ -336,3 +336,60 @@ input, select, textarea {
     flex-direction: column;
   }
 }
+
+.product-stack {
+  display: grid;
+  gap: 26px;
+}
+
+.product-feature {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 34px;
+  align-items: center;
+}
+
+.product-feature h3 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.product-copy p:not(.eyebrow) {
+  font-size: 17px;
+  color: #333;
+}
+
+.product-copy ul {
+  margin: 18px 0 0;
+  padding-left: 20px;
+}
+
+.product-copy li {
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.product-actions {
+  margin-top: 22px;
+}
+
+.product-actions .button {
+  width: fit-content;
+}
+
+.product-feature figure img {
+  height: 230px;
+}
+
+@media (max-width: 850px) {
+  .product-feature {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+}
