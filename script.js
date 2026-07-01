@@ -1,23 +1,6 @@
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
-const navToggle = document.querySelector('.nav-toggle');
-const siteNav = document.getElementById('site-nav');
-
-if (navToggle && siteNav) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-
-  siteNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      siteNav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
-
 document.querySelectorAll('.product-carousel').forEach((carousel) => {
   const track = carousel.querySelector('.carousel-track');
   const slides = carousel.querySelectorAll('.carousel-slide');
@@ -28,6 +11,9 @@ document.querySelectorAll('.product-carousel').forEach((carousel) => {
   if (!track || !slides.length || !prev || !next || !dotsContainer) return;
 
   let current = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let didSwipe = false;
 
   if (slides.length <= 1) {
     carousel.classList.add('single-slide');
@@ -73,7 +59,30 @@ document.querySelectorAll('.product-carousel').forEach((carousel) => {
     openImageLightbox(activeSlide.src, activeSlide.alt);
   }
 
-  track.addEventListener('click', openLightbox);
+  track.addEventListener('click', () => {
+    if (!didSwipe) openLightbox();
+    didSwipe = false;
+  });
+
+  track.addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+    didSwipe = false;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > 45 && slides.length > 1) {
+      didSwipe = true;
+
+      if (swipeDistance < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  }, { passive: true });
 
   track.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
