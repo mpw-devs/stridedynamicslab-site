@@ -1,4 +1,4 @@
-/* Stride Dynamics — gallery, mobile swipe, full-size viewer, contact email */
+/* Stride Dynamics v17 — audience scroll, product gallery, and contact email */
 (() => {
   'use strict';
 
@@ -182,6 +182,45 @@
     }
     buildDots();
   });
+
+  // Three persona cards: native horizontal scroll, with accessible arrow controls
+  // and a small progress indicator at mobile/tablet sizes.
+  const audienceTrack = document.getElementById('audience-track');
+  if (audienceTrack) {
+    const cards = [...audienceTrack.querySelectorAll('.audience-card')];
+    const previous = document.querySelector('[data-audience-prev]');
+    const next = document.querySelector('[data-audience-next]');
+    const progress = [...document.querySelectorAll('.audience-position span')];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const cardLeft = index => cards[index].offsetLeft - cards[0].offsetLeft;
+    const currentIndex = () => {
+      const maxScroll = Math.max(0, audienceTrack.scrollWidth - audienceTrack.clientWidth);
+      if (maxScroll === 0) return 0;
+      return Math.round((audienceTrack.scrollLeft / maxScroll) * (cards.length - 1));
+    };
+    const updateAudienceControls = () => {
+      const index = currentIndex();
+      if (previous) previous.disabled = index === 0;
+      if (next) next.disabled = index >= cards.length - 1;
+      progress.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+    };
+    const goToCard = index => {
+      const target = Math.max(0, Math.min(index, cards.length - 1));
+      const maxScroll = Math.max(0, audienceTrack.scrollWidth - audienceTrack.clientWidth);
+      audienceTrack.scrollTo({left: Math.min(cardLeft(target), maxScroll), behavior: prefersReducedMotion.matches ? 'instant' : 'smooth'});
+    };
+    if (previous) previous.addEventListener('click', () => goToCard(currentIndex() - 1));
+    if (next) next.addEventListener('click', () => goToCard(currentIndex() + 1));
+    audienceTrack.addEventListener('scroll', updateAudienceControls, { passive: true });
+    audienceTrack.addEventListener('keydown', event => {
+      if (event.target !== audienceTrack) return;
+      if (event.key === 'ArrowRight') { event.preventDefault(); goToCard(currentIndex() + 1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); goToCard(currentIndex() - 1); }
+    });
+    window.addEventListener('resize', updateAudienceControls);
+    updateAudienceControls();
+  }
 
   // Product inquiry links populate the existing contact form.
   document.querySelectorAll('[data-interest]').forEach(link => {
