@@ -1,52 +1,46 @@
-# Stride Dynamics — Website refresh v17 (review version)
+# Stride Dynamics website — contact fix v18
 
-This is a focused, single-product website for the **Dynamic Foot Wedge**. It updates the open GitHub pull request, **not the live website** until the pull request is merged.
+This changes **only the contact functionality** in the existing v17 Dynamic Foot Wedge site. The hero, logo, audience cards, product/gallery, Etsy button, and contact layout remain otherwise unchanged.
 
-## What changed from v16
+## Why the existing Contact form appeared broken
 
-- Kept the larger Stride Dynamics logo (78px desktop / 62px mobile).
-- Replaced the strength-focused hero with a centered, full-width message: **Feel better on your feet.** No AI lifestyle photo is used in the hero.
-- Kept a single hero CTA linking down to the featured product.
-- Added three audience cards: **Athletes**, **PT & recovery**, and **Tight arches / plantar fascia**. All three are visible side-by-side on desktop; on mobile/tablet they form a horizontally scrollable, swipeable row with arrow buttons and a position indicator.
-- Consolidated product information into one **Dynamic Foot Wedge** section. Removed the Static Foot Wedge and the separate “Why it matters” section; their relevant mobility, arch-contact, and everyday-movement ideas are integrated into the persona/product sections.
-- Kept the existing feedback/contact section, with the same email address and mailto behavior.
-- Preserved the existing Dynamic Foot Wedge photo gallery, mobile swiping, desktop hover arrows, and tap/click-to-enlarge viewer.
-- Kept the Etsy listing and a separate availability inquiry CTA.
+The prior form used `mailto:`, which does **not** submit directly from the website. It depends on the visitor having a default email application configured. Clicking an email link or **Prepare email** can appear to do nothing on browsers and devices without such an application.
 
-## Deployment
+The top navigation `#contact` anchor and the product's **Ask about availability** anchor already point to the correct section. These anchors have not changed.
 
-Upload `index.html`, `styles.css`, and `script.js` to the repository root (or merge the proposed GitHub pull request). Retain your **existing assets and favicon files**; this revision does not change or rename them. When manually deploying, hard-refresh to clear browser caches.
+## New contact flow
 
-## Images and logo
+- The form now submits with a standard HTTPS POST to [FormSubmit](https://formsubmit.co/), a third-party form-to-email service. It works without a visitor's local email application or JavaScript.
+- Visitor fields (name, email, reason, message) are sent to FormSubmit for processing. A privacy link is visible below the form.
+- The direct email `mailto:` link is retained for people with email apps; a **Copy address** button provides an alternative.
+- The **Ask about availability** link still sets "Interested in purchasing" and drafts a prefilled inquiry in the form.
+- The form keeps CAPTCHA and adds a hidden honeypot to reduce spam. No service keys are embedded in the website.
 
-Logo: `assets/SDL_Logo_Header.png` — intentionally remains 78px on desktop and 62px on mobile.
+## REQUIRED: Activate the form before relying on it
 
-Gallery photo files already in the repository:
+The configured endpoint is:
 
-- `assets/DSC03273.jpg`
-- `assets/DSC03274.jpg`
-- `assets/DSC03276.jpg`
-- `assets/DSC03302.jpg`
-- `assets/DSC03303.jpg`
+`https://formsubmit.co/info@stridedynamicslab.com`
 
-If you later add `assets/Dynamic_Wedge-Demo.gif`, uncomment the optional GIF image line in `index.html` to include it in the carousel. No extra JS changes are needed.
+**Before merging:** Confirm that `info@stridedynamicslab.com` is an active inbox you control. If it is not, change both this endpoint and the displayed recipient address to an inbox you control. The form cannot be activated without receiving email at its configured address.
 
-## Interactions
+**After merging / deploying:**
 
-- Desktop product gallery: hover for arrows and zoom icon; click photo to open full-size viewer.
-- Mobile product gallery: swipe photo to change slides, tap to enlarge; tap small image dots to jump; swipe enlarged image to navigate.
-- Audience cards: all three visible on wide screens; swipe horizontally on narrow screens or use the audience arrows. Keyboard focus on the card rail supports left/right arrows.
-- Contact: the contact form **does not submit to a server**. “Prepare email” opens the visitor's configured mail application with the message filled out; nothing is sent automatically. The direct email link works as another option.
-- Pricing and inventory: the site does not claim pricing or stock. Check the Etsy listing for current availability.
+1. Visit the **live** `https://stridedynamicslab.com/` site.
+2. Submit a test inquiry through the Contact form. On first use, FormSubmit emails an **activation link** to the configured recipient.
+3. Open that inbox (including its spam folder) and **click the FormSubmit activation link**. Form messages cannot be counted as delivered until activation is complete.
+4. Submit a second test inquiry on a phone or another browser and verify it actually arrives in the inbox. Only then count this setup as working end-to-end.
+5. If activation mail never arrives, verify the inbox is receiving normal mail, and see [FormSubmit setup](https://formsubmit.co/help).
 
-## Review checklist
+The form will open FormSubmit's default CAPTCHA/thank-you flow rather than navigating to an onsite confirmation. This is intentional for a simple and reliable native HTML POST.
 
-1. Does the headline communicate comfort and mobility rather than strength training?
-2. Do the three audience cards represent athletes, PT/recovery, and plantar/arch tightness in language that fits each audience?
-3. Does the single Dynamic Foot Wedge product section explain the textured wedge and rolling barrel clearly?
-4. Are the mobile card swiping and photo gallery interactions intuitive?
-5. Are the preserved feedback/contact section and original logo still to your liking?
+**Please note:** Using FormSubmit means visitor form content is processed by an external provider. Review its [privacy terms](https://formsubmit.co/privacy.pdf) before merging if you have specific privacy requirements. If you prefer a provider you already use, we can switch to its verified endpoint instead.
 
-## Validation and claim boundaries
+## Files changed
 
-The website uses language around comfort, stretching, mobility and product mechanics rather than claiming to diagnose, cure or treat plantar fasciitis or other conditions. Use the product according to individual tolerance and any clinician's guidance.
+- `index.html`: form action + hidden fields, updated submit text, email copy button and privacy notice.
+- `script.js`: removes `mailto:` submission interception; adds safe Copy address behavior.
+- `styles.css`: styles the copy button, status message, and hidden anti-spam field.
+- `README.md`: documents the activation and testing steps.
+
+No product photographs, logos, favicons, or other assets are modified.
