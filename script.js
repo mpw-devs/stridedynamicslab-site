@@ -1,4 +1,4 @@
-/* Stride Dynamics v17 — audience scroll, product gallery, and contact email */
+/* Stride Dynamics v18 — audience scroll, gallery, and reliable contact options */
 (() => {
   'use strict';
 
@@ -234,23 +234,39 @@
     });
   });
 
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      const data = new FormData(form);
-      const reason = String(data.get('reason') || 'Website inquiry');
-      const subject = `Stride Dynamics inquiry: ${reason}`;
-      const body = [
-        `Name: ${data.get('name') || ''}`,
-        `Email: ${data.get('email') || ''}`,
-        `Reason: ${reason}`,
-        '',
-        'Message:',
-        `${data.get('message') || ''}`
-      ].join('\n');
-      window.location.href = `mailto:info@stridedynamicslab.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  // The contact form uses a standard HTTPS POST to FormSubmit. Do not intercept
+  // submit: native form submission works even if JavaScript is blocked or fails.
+  // Visitors without an email app can use the form or copy the address below.
+  const copyButton = document.querySelector('[data-copy-email]');
+  const copyFeedback = document.getElementById('contact-copy-feedback');
+  if (copyButton) {
+    copyButton.addEventListener('click', async () => {
+      const address = copyButton.dataset.copyEmail;
+      let copied = false;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(address);
+          copied = true;
+        }
+      } catch (_) {
+        // Clipboard permission can be denied; use the classic fallback below.
+      }
+      if (!copied) {
+        const helper = document.createElement('textarea');
+        helper.value = address;
+        helper.setAttribute('readonly', '');
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+        helper.remove();
+      }
+      if (copyFeedback) {
+        copyFeedback.textContent = copied
+          ? 'Email address copied. Paste it into any email app.'
+          : 'Select and copy the email address above to email us directly.';
+      }
     });
   }
 })();
