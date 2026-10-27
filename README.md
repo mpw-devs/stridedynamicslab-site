@@ -1,21 +1,27 @@
-# Stride Dynamics — Website refresh v16
+# Stride Dynamics — Website refresh v17 (review version)
 
-This is a full replacement for the website's `index.html`, `styles.css`, and `script.js`.
+This is a focused, single-product website for the **Dynamic Foot Wedge**. It updates the open GitHub pull request, **not the live website** until the pull request is merged.
 
-## Deploy
+## What changed from v16
 
-1. Back up the three existing files on your web host.
-2. Replace `index.html`, `styles.css`, and `script.js` with the files here.
-3. **Keep your existing `/assets` folder and logo file intact.** The ZIP intentionally does not include or overwrite product photos, logos, or favicon files. All image paths are relative to your site's existing assets folder.
-4. Hard refresh (Ctrl/Cmd + Shift + R) on both desktop and mobile to load fresh CSS/JS.
+- Kept the larger Stride Dynamics logo (78px desktop / 62px mobile).
+- Replaced the strength-focused hero with a centered, full-width message: **Feel better on your feet.** No AI lifestyle photo is used in the hero.
+- Kept a single hero CTA linking down to the featured product.
+- Added three audience cards: **Athletes**, **PT & recovery**, and **Tight arches / plantar fascia**. All three are visible side-by-side on desktop; on mobile/tablet they form a horizontally scrollable, swipeable row with arrow buttons and a position indicator.
+- Consolidated product information into one **Dynamic Foot Wedge** section. Removed the Static Foot Wedge and the separate “Why it matters” section; their relevant mobility, arch-contact, and everyday-movement ideas are integrated into the persona/product sections.
+- Kept the existing feedback/contact section, with the same email address and mailto behavior.
+- Preserved the existing Dynamic Foot Wedge photo gallery, mobile swiping, desktop hover arrows, and tap/click-to-enlarge viewer.
+- Kept the Etsy listing and a separate availability inquiry CTA.
 
-## Logo
+## Deployment
 
-The header uses `assets/SDL_Logo_Header.png` (the existing logo path). It is a little larger: 78px high on desktop and 62px high on mobile. Edit `.brand-logo` in `styles.css` to adjust.
+Upload `index.html`, `styles.css`, and `script.js` to the repository root (or merge the proposed GitHub pull request). Retain your **existing assets and favicon files**; this revision does not change or rename them. When manually deploying, hard-refresh to clear browser caches.
 
-## Dynamic Foot Wedge gallery
+## Images and logo
 
-These five existing live-site image files are referenced:
+Logo: `assets/SDL_Logo_Header.png` — intentionally remains 78px on desktop and 62px on mobile.
+
+Gallery photo files already in the repository:
 
 - `assets/DSC03273.jpg`
 - `assets/DSC03274.jpg`
@@ -23,24 +29,24 @@ These five existing live-site image files are referenced:
 - `assets/DSC03302.jpg`
 - `assets/DSC03303.jpg`
 
-To add your GIF, copy it to `/assets/Dynamic_Wedge-Demo.gif`, then uncomment the `<img ...Dynamic_Wedge-Demo.gif...>` line in the Dynamic Wedge gallery in `index.html`. If the GIF has a different name, change that file path.
+If you later add `assets/Dynamic_Wedge-Demo.gif`, uncomment the optional GIF image line in `index.html` to include it in the carousel. No extra JS changes are needed.
 
-Use a normal `<img class="gallery-slide" data-slide ...>` line for additional photos in either product gallery. Dots and image counts are created automatically. Galleries with one image automatically hide their carousel dots and arrows.
+## Interactions
 
-Desktop: hover for photo navigation arrows and zoom icon, click to expand.
-Mobile: swipe photo sideways to change, tap photo to enlarge, tap dots to select; the small zoom icon stays visible. The expanded viewer also supports swiping, arrows, and a close button.
+- Desktop product gallery: hover for arrows and zoom icon; click photo to open full-size viewer.
+- Mobile product gallery: swipe photo to change slides, tap to enlarge; tap small image dots to jump; swipe enlarged image to navigate.
+- Audience cards: all three visible on wide screens; swipe horizontally on narrow screens or use the audience arrows. Keyboard focus on the card rail supports left/right arrows.
+- Contact: the contact form **does not submit to a server**. “Prepare email” opens the visitor's configured mail application with the message filled out; nothing is sent automatically. The direct email link works as another option.
+- Pricing and inventory: the site does not claim pricing or stock. Check the Etsy listing for current availability.
 
-## Etsy and inventory
+## Review checklist
 
-The Dynamic Foot Wedge's primary button links to this exact Etsy listing ID, using a clean URL:
-`https://www.etsy.com/listing/4508748579/dynamic-foot-wedge-foot-stretch-plantar`
+1. Does the headline communicate comfort and mobility rather than strength training?
+2. Do the three audience cards represent athletes, PT/recovery, and plantar/arch tightness in language that fits each audience?
+3. Does the single Dynamic Foot Wedge product section explain the textured wedge and rolling barrel clearly?
+4. Are the mobile card swiping and photo gallery interactions intuitive?
+5. Are the preserved feedback/contact section and original logo still to your liking?
 
-The page does not claim a price or that stock is available. The alternative CTA fills out a purchase-interest email form. The Static Wedge has the same interest email pathway, but no Etsy link was supplied for it.
+## Validation and claim boundaries
 
-## Contact form
-
-The contact section retains the existing mailto approach: submitting the form opens the visitor's email app with the message prefilled; it **does not** store or send data automatically. No backend or third-party dependency is needed, but visitors must have an email app configured. The direct email link remains available as an alternative.
-
-## External font note
-
-The site uses DM Sans and Manrope via Google Fonts. If those fonts cannot load, it falls back to Arial / system sans-serif automatically.
+The website uses language around comfort, stretching, mobility and product mechanics rather than claiming to diagnose, cure or treat plantar fasciitis or other conditions. Use the product according to individual tolerance and any clinician's guidance.
